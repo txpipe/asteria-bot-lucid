@@ -22,29 +22,29 @@ const CHALLENGE_TOKEN: AssetClassT = {
 const INITIAL_POS_X = -27n;
 const INITIAL_POS_Y = 23n;
 
-// const txHash = await createShip(
-//   ASTERIA_SCRIPT_INPUT,
-//   SPACETIME_SCRIPT_INPUT,
-//   CHALLENGE_TOKEN,
-//   PARTICIPATION_FEE,
-//   INITIAL_FUEL,
-//   INITIAL_POS_X,
-//   INITIAL_POS_Y
-// );
+const txHash = await createShip(
+  ASTERIA_SCRIPT_INPUT,
+  SPACETIME_SCRIPT_INPUT,
+  CHALLENGE_TOKEN,
+  PARTICIPATION_FEE,
+  INITIAL_FUEL,
+  INITIAL_POS_X,
+  INITIAL_POS_Y
+);
 
 // console.log(txHash);
 
-const delta_x = 2n;
-const delta_y = -3n;
-const shipTxHash =
-  "2f6319f702ef26e1213d39dba190f140b41ac57fdf71dc97f711e75052e97304";
+// const delta_x = 2n;
+// const delta_y = -3n;
+// const shipTxHash =
+//   "2f6319f702ef26e1213d39dba190f140b41ac57fdf71dc97f711e75052e97304";
 
-const txHash = await moveShip(
-  SPACETIME_SCRIPT_INPUT,
-  FUEL_PER_STEP,
-  delta_x,
-  delta_y,
-  shipTxHash
-);
+// const txHash2 = await moveShip(
+//   SPACETIME_SCRIPT_INPUT,
+//   FUEL_PER_STEP,
+//   delta_x,
+//   delta_y,
+//   shipTxHash
+// );
 
-console.log(txHash);
+// console.log(txHash);
