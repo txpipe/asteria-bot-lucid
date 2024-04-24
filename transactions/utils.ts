@@ -3,7 +3,7 @@ import { Lucid, Blockfrost } from "https://deno.land/x/lucid@0.10.7/mod.ts";
 export const lucidBase = async (): Promise<Lucid> => {
   const lucid = await Lucid.new(
     new Blockfrost(
-      "https://dmtr_blockfrost_v1_preprod_1g3myuaesde8yzm6nvusqnk3c.blockfrost-m1.demeter.run",
+      "https://cardano-preview.blockfrost.io/api/v0",
       Deno.env.get("BLOCKFROST_PROJECT_ID")
     ),
     "Preprod"
