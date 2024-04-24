@@ -4,6 +4,7 @@ import {
   TxHash,
   Constr,
   UTxO,
+  Script,
 } from "https://deno.land/x/lucid@0.10.7/mod.ts";
 import {
   distance,
@@ -18,8 +19,6 @@ async function moveShip(
   fuel_per_step: bigint,
   delta_x: bigint,
   delta_y: bigint,
-  ship_token_name: string,
-  pilot_token_name: string,
   shipTxHash: TxHash
 ): Promise<TxHash> {
   const lucid = await lucidBase();
@@ -31,13 +30,9 @@ async function moveShip(
 
   const spacetimeRef = await fetchReferenceScript(lucid, spacetimeRefTxHash);
 
-  const spacetimeValidator = spacetimeRef[0].scriptRef;
+  const spacetimeValidator = spacetimeRef.scriptRef as Script;
   const spacetimeAddressBech32 =
     lucid.utils.validatorToAddress(spacetimeValidator);
-
-  const shipyardPolicyId = lucid.utils.mintingPolicyToId(spacetimeValidator);
-  const shipTokenUnit = toUnit(shipyardPolicyId, ship_token_name);
-  const pilotTokenUnit = toUnit(shipyardPolicyId, pilot_token_name);
 
   const ship: UTxO = (
     await lucid.utxosByOutRef([
@@ -73,6 +68,16 @@ async function moveShip(
     ShipDatum as unknown as ShipDatumT
   );
 
+  const shipyardPolicyId = lucid.utils.mintingPolicyToId(spacetimeValidator);
+  const shipTokenUnit = toUnit(
+    shipyardPolicyId,
+    shipInputDatum.ship_token_name
+  );
+  const pilotTokenUnit = toUnit(
+    shipyardPolicyId,
+    shipInputDatum.pilot_token_name
+  );
+
   const moveShipRedeemer = Data.to(
     new Constr(1, [new Constr(0, [delta_x, delta_y])])
   );
@@ -80,7 +85,7 @@ async function moveShip(
   const tx = await lucid
     .newTx()
     .collectFrom([ship], moveShipRedeemer)
-    .readFrom(spacetimeRef)
+    .readFrom([spacetimeRef])
     .payToContract(
       spacetimeAddressBech32,
       { inline: shipOutputDatum },

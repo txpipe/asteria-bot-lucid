@@ -5,50 +5,46 @@ import { AssetClassT } from "./transactions/types.ts";
 
 // Challenge parameters, these are defined by the administrators, you can find this on the
 const ASTERIA_SCRIPT_INPUT =
-  "48eefd160b9114e80dea85404446947e5e15d19e96914ce1182b05ee7a36fd98";
+  "c2badd0df205f93fef630785163b86d6872c2190cf4dd7628a3934b89b56f9bb";
 const SPACETIME_SCRIPT_INPUT =
-  "1af0fb23fb9b1a16e31c7f46bbf6f2464fc4f1795773cd8a9425133ba46c8540";
+  "431aaa1871f6187d3f3ebebafd41ef17f712d3af54c0bba4ff780ed176179603";
 const FUEL_SCRIPT_INPUT =
-  "eb2f88f353163aeb0abcafa040b6e6d8f64ea39c5064134061b44fd3bedb23a9";
+  "87f626782b975a1496d751746b2a78579f9378a4843e00e72c4e9a74f519f24f";
 const FUEL_PER_STEP = 1n;
 const INITIAL_FUEL = 30n;
-const PARTICIPATION_FEE = 3000n;
+const PARTICIPATION_FEE = 20_000_000n;
 const CHALLENGE_TOKEN: AssetClassT = {
-  policy: "0298aa99f95e2fe0a0132a6bb794261fb7e7b0d988215da2f2de2005",
-  name: fromText("tokenA"),
+  policy: "516238dd0a79bac4bebe041c44bad8bf880d74720733d2fc0d255d28",
+  name: fromText("asteriaAdmin"),
 };
 
 // Ship parameters, these are defined by the participant when starting the challenge.
-const INITIAL_POS_X = 20n;
-const INITIAL_POS_Y = -13n;
+// const INITIAL_POS_X = -27n;
+// const INITIAL_POS_Y = 23n;
 
-const txHash = await createShip(
-  ASTERIA_SCRIPT_INPUT,
-  SPACETIME_SCRIPT_INPUT,
-  CHALLENGE_TOKEN,
-  PARTICIPATION_FEE,
-  INITIAL_FUEL,
-  INITIAL_POS_X,
-  INITIAL_POS_Y
-);
-
-console.log(txHash);
-
-// const delta_x = 2n;
-// const delta_y = -3n;
-// const ship_token_name = fromText("SHIP0");
-// const pilot_token_name = fromText("PILOT0");
-// const shipTxHash =
-//   "ca30a841e582f284b7b71d39c2cbc8b9a7fca9476d921b6b9d97c0c7e31bf2bc";
-
-// const txHash = await moveShip(
+// const txHash = await createShip(
+//   ASTERIA_SCRIPT_INPUT,
 //   SPACETIME_SCRIPT_INPUT,
-//   FUEL_PER_STEP,
-//   delta_x,
-//   delta_y,
-//   ship_token_name,
-//   pilot_token_name,
-//   shipTxHash
+//   CHALLENGE_TOKEN,
+//   PARTICIPATION_FEE,
+//   INITIAL_FUEL,
+//   INITIAL_POS_X,
+//   INITIAL_POS_Y
 // );
 
 // console.log(txHash);
+
+const delta_x = 2n;
+const delta_y = -3n;
+const shipTxHash =
+  "1ff3ff0f39a13979750f686ffb28fe076ce7d6bb33bd2134385337e9e45190ff";
+
+const txHash = await moveShip(
+  SPACETIME_SCRIPT_INPUT,
+  FUEL_PER_STEP,
+  delta_x,
+  delta_y,
+  shipTxHash
+);
+
+console.log(txHash);
