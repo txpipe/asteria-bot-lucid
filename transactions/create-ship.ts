@@ -6,6 +6,7 @@ import {
   UTxO,
   fromText,
   Script,
+  generateSeedPhrase,
 } from "https://deno.land/x/lucid@0.10.7/mod.ts";
 import { fetchReferenceScript, lucidBase } from "./utils.ts";
 import {
@@ -26,10 +27,22 @@ async function createShip(
   pos_y: bigint
 ): Promise<TxHash> {
   const lucid = await lucidBase();
-  const seed = Deno.env.get("SEED");
+  let seed = Deno.env.get("SEED");
 
   if (!seed) {
-    throw Error("Unable to read wallet's seed from env");
+    seed = generateSeedPhrase();
+    lucid.selectWalletFromSeed(seed);
+    const address = await lucid.wallet.address();
+
+    console.log("\n🚨 Missing $SEED environment variable 🚨");
+    console.log("In case you need one, here it is:\n");
+    console.log(`export SEED="${seed}"`);
+    console.log(
+      "\nRun this on your terminal and send yourself some funds to the following address on the preview network:\n",
+    );
+    console.log(address);
+    console.log("\nOnce the funds arrive, run this script again.\n");
+    return;
   }
 
   lucid.selectWalletFromSeed(seed);
