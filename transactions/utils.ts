@@ -1,12 +1,18 @@
 import { Lucid, Blockfrost } from "https://deno.land/x/lucid@0.10.7/mod.ts";
 
 export const lucidBase = async (): Promise<Lucid> => {
+  const PROJECT_ID = Deno.env.get("BLOCKFROST_PROJECT_ID");
+
+  if (!PROJECT_ID) {
+    throw Error("Missing BLOCKFROST_PROJECT_ID env");
+  }
+
   const lucid = await Lucid.new(
     new Blockfrost(
       "https://cardano-preview.blockfrost.io/api/v0",
-      Deno.env.get("BLOCKFROST_PROJECT_ID")
+      PROJECT_ID
     ),
-    "Preprod"
+    "Preview"
   );
   return lucid;
 };
