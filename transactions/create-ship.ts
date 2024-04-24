@@ -5,6 +5,7 @@ import {
   Constr,
   UTxO,
   fromText,
+  Script,
 } from "https://deno.land/x/lucid@0.10.7/mod.ts";
 import { fetchReferenceScript, lucidBase } from "./utils.ts";
 import {
@@ -36,17 +37,17 @@ async function createShip(
   const asteriaRef = await fetchReferenceScript(lucid, asteriaRefTxHash);
 
   const asteriaAddressBech32 = lucid.utils.validatorToAddress(
-    asteriaRef.scriptRef
+    asteriaRef.scriptRef as Script
   );
 
   const spacetimeRef = await fetchReferenceScript(lucid, spacetimeRefTxHash);
 
   const shipyardPolicyId = lucid.utils.mintingPolicyToId(
-    spacetimeRef.scriptRef
+    spacetimeRef.scriptRef as Script
   );
 
   const spacetimeAddressBech32 = lucid.utils.validatorToAddress(
-    spacetimeRef.scriptRef
+    spacetimeRef.scriptRef as Script
   );
 
   const asteria: UTxO = (await lucid.utxosAt(asteriaAddressBech32))[0];
@@ -96,7 +97,7 @@ async function createShip(
   const mintRedeemer = Data.to(new Constr(0, []));
   const tx = await lucid
     .newTx()
-    .readFrom([asteriaRef[0], spacetimeRef[0]])
+    .readFrom([asteriaRef, spacetimeRef])
     .mintAssets(
       {
         [shipTokenUnit]: BigInt(1),
