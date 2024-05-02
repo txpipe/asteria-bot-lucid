@@ -5,11 +5,11 @@ import { AssetClassT } from "./transactions/types.ts";
 
 // Challenge parameters, these are defined by the administrators, you can find this on the
 const ASTERIA_SCRIPT_INPUT =
-  "c2badd0df205f93fef630785163b86d6872c2190cf4dd7628a3934b89b56f9bb";
+  "3529d7a7e2790353f14685ab0f982468998fca03f3481612991f4881b08c6999";
 const SPACETIME_SCRIPT_INPUT =
-  "431aaa1871f6187d3f3ebebafd41ef17f712d3af54c0bba4ff780ed176179603";
+  "2b11371fbcdb58359a095ea7d5b1cfab555dd4bbdbe8afc4dfb9d5d41acc2116";
 const FUEL_SCRIPT_INPUT =
-  "87f626782b975a1496d751746b2a78579f9378a4843e00e72c4e9a74f519f24f";
+  "9176cdea9dc208593a88267fd11a6901f8b26f788644d563511261e52fd2b513";
 const FUEL_PER_STEP = 1n;
 const INITIAL_FUEL = 30n;
 const PARTICIPATION_FEE = 20_000_000n;
