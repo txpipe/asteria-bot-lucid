@@ -8,24 +8,24 @@ import { quit } from "./transactions/quit.ts";
 
 // Challenge parameters, these are defined by the administrators, you can find this on the
 
-// Reference scripts for:
-// const admin_token: AssetClassT = {
-//   policy: "516238dd0a79bac4bebe041c44bad8bf880d74720733d2fc0d255d28",
-//   name: fromText("asteriaAdmin"),
-// };
-// const ship_mint_lovelace_fee = 20_000_000n;
-// const max_asteria_mining = 100n;
-// const max_moving_distance = 5n;
-// const max_ship_fuel = 30n;
-// const fuel_per_step = 1n;
-// const initial_fuel = max_ship_fuel;
-// const min_asteria_distance = 50n;
-// // const ASTERIA_SCRIPT_INPUT =
-// //   "3529d7a7e2790353f14685ab0f982468998fca03f3481612991f4881b08c6999";
-// // const SPACETIME_SCRIPT_INPUT =
-// //   "2b11371fbcdb58359a095ea7d5b1cfab555dd4bbdbe8afc4dfb9d5d41acc2116";
-// // const FUEL_SCRIPT_INPUT =
-// //   "9176cdea9dc208593a88267fd11a6901f8b26f788644d563511261e52fd2b513";
+// // Reference scripts for:
+// // const admin_token: AssetClassT = {
+// //   policy: "516238dd0a79bac4bebe041c44bad8bf880d74720733d2fc0d255d28",
+// //   name: fromText("asteriaAdmin"),
+// // };
+// // const ship_mint_lovelace_fee = 20_000_000n;
+// // const max_asteria_mining = 100n;
+// // const max_moving_distance = 5n;
+// // const max_ship_fuel = 30n;
+// // const fuel_per_step = 1n;
+// // const initial_fuel = max_ship_fuel;
+// // const min_asteria_distance = 50n;
+// const ASTERIA_SCRIPT_INPUT =
+//   "3529d7a7e2790353f14685ab0f982468998fca03f3481612991f4881b08c6999";
+// const SPACETIME_SCRIPT_INPUT =
+//   "2b11371fbcdb58359a095ea7d5b1cfab555dd4bbdbe8afc4dfb9d5d41acc2116";
+// const FUEL_SCRIPT_INPUT =
+//   "9176cdea9dc208593a88267fd11a6901f8b26f788644d563511261e52fd2b513";
 
 // Reference scripts for:
 // const admin_token: AssetClassT = {
