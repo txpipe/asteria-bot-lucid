@@ -38,11 +38,11 @@ async function createShip(
     console.log("In case you need one, here it is:\n");
     console.log(`export SEED="${seed}"`);
     console.log(
-      "\nRun this on your terminal and send yourself some funds to the following address on the preview network:\n",
+      "\nRun this on your terminal and send yourself some funds to the following address on the preview network:\n"
     );
     console.log(address);
     console.log("\nOnce the funds arrive, run this script again.\n");
-    return;
+    return "";
   }
 
   lucid.selectWalletFromSeed(seed);
